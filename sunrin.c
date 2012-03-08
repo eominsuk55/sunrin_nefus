@@ -1,35 +1,45 @@
-#include <stdio.h>
+//1학년 4반 21번 엄민석입니다. C++로 구현했습니다.
+#include <iostream>
+using namespace std;
 
-int main(int argc, char **argv){
-    int tape[99];
-    int *head = tape;
-    char curMconfig;
+int main(void)
+{
+    int Tape[100];
+	int* Head = Tape;
+	char String[100];
 
-    FILE *fp;
-    fp = fopen(argv[1], "r");
-
-    while((curMconfig=fgetc(fp))!=-1){
-        switch(curMconfig){
-            case '>':
-                head++;
-                break;
-            case '<':
-                head--;
-                break;
-            case '!':
-                printf("%d\n", *head);
-                break;
-            case '?':
-                scanf("%d", head);
-                break;
-            case '+':
-                ++*head;
-                break;
-            case '-':
-                --*head;
-                break;
-        }
-    }
-    fclose(fp);
-
+	for( ; ; )
+	{
+		fgets(String, 100, stdin);
+    
+		for(unsigned int i = 0 ; i < (strlen(String) - 1) ; i++)
+		{
+			switch(String[i])
+			{
+			case '>':
+				Head++;
+				break;
+			case '<':
+				Head--;
+				break;
+			case '!':
+				cout << *Head << endl;
+				break;
+			case '?':
+				cin >> *Head;
+				break;
+			case '+':
+				++*Head;
+				break;
+			case '-':
+				--*Head;
+				break;
+			case '*':
+				for(int i = 0 ; i < *Head ; i++)
+					cout << '*';
+				cout << endl;
+				break;
+			}
+		}
+	}
 }
